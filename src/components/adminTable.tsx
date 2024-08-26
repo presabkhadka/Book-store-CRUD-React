@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-table";
 import DeleteModal from "./deleteModal";
 import Modal from "./editModal";
+import { useToast } from "./ui/use-toast";
 
 type Book = {
   id: number;
@@ -24,6 +25,7 @@ function AdminTable() {
   const { books, addBook, updateBook, deleteBook } = useBookContext();
   const [newBook, setNewBook] = useState<Partial<Book>>({});
   const [editBookId, setEditBookId] = useState<number | null>(null);
+  const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -37,18 +39,33 @@ function AdminTable() {
         newBook.stock === undefined ||
         newBook.price === undefined
       ) {
-        alert("Please fill in all fields."); 
+        // alert("Please fill in all fields.");
+        toast({
+          title: "Empty Fields",
+          description: "Please fill all the fields to proceed",
+          variant: "destructive",
+        });
         return;
       }
       const newId = books.length ? Math.max(...books.map((b) => b.id)) + 1 : 1;
       addBook({ id: newId, ...newBook } as Book);
+      toast({
+        title: "Book Added",
+        description: "Book has been successfully added!",
+        
+      });
     } else {
       if (
         !newBook.name ||
         newBook.stock === undefined ||
         newBook.price === undefined
       ) {
-        alert("Please fill in all fields.");
+        // alert("Please fill in all fields.");
+        toast({
+          title: "Empty Fields",
+          description: "Please fill all the fields to proceed",
+          variant: "destructive",
+        });
         return;
       }
       updateBook({ id: editBookId, ...newBook } as Book);

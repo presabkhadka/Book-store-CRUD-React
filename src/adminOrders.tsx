@@ -5,8 +5,8 @@ function AdminOrders() {
     <div className="grid grid-cols-12 h-screen">
       <div className="col-span-full flex flex-col">
         <Dnav/>
-        <div>
-            a
+        <div className="p-2">
+            
         </div>
       </div>
     </div>
