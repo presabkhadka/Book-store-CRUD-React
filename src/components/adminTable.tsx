@@ -39,7 +39,6 @@ function AdminTable() {
         newBook.stock === undefined ||
         newBook.price === undefined
       ) {
-        // alert("Please fill in all fields.");
         toast({
           title: "Empty Fields",
           description: "Please fill all the fields to proceed",
@@ -60,7 +59,6 @@ function AdminTable() {
         newBook.stock === undefined ||
         newBook.price === undefined
       ) {
-        // alert("Please fill in all fields.");
         toast({
           title: "Empty Fields",
           description: "Please fill all the fields to proceed",
